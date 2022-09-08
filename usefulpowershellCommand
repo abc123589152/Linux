@@ -1,2 +1,8 @@
 Get-VM -VMName {computerneme} | select-object VMId | Get-VHD <===========>Check hyper v VHDX information
 Get-VHD -Path "VDHX address" | select-object @{Name="SizeGB";Expression={$_.Size/1GB}} <==========>change display size to GB
+=======================
+use C$
+net use \\{ipaddress}\C$ /user:{ComputerUserName} {password}
+Remove-Item {path}======>Delete File
+\schtasks.exe /Create /U Administrator /P 1qaz@WSX /TR c:\\shutdown.bat /SC DAILY /S 192.168.1.33 /TN shutdown /st 16:03 /F /ru "SYSTEM"==>Setting schedule
+\schtasks /run /TN shutdown /U administrator /P 1qaz@WSX /S 192.168.1.33===>run for remote-computer schedule
