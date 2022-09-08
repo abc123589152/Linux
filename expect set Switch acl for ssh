@@ -1,0 +1,31 @@
+#!/bin/bash
+ipaddr=($(cat /home/abc123/shellscrtipt/ipaddress2.txt))
+for((i=0;i<${#ipaddr[@]};i++))
+do
+/usr/bin/expect << EOF
+set timeout 2
+spawn ssh "${ipaddr[$i]}" -l stsb1
+expect "Password:"
+send "Cht@2369\r"
+expect ">"
+send "enable\r"
+expect "Password:"
+send "cisco\r"
+expect "#"
+send "conf t\r"
+expect "(config)#"
+send "access-list 10 permit 192.168.190.132 log\r"
+expect "(config)#"
+send "line vty 0 15\r"
+expect "(config-line)#"
+send "access-class 10 in\r"
+expect "(config-line)#"
+send "end\r"
+expect "#"
+send "exit\r"
+expect ">"
+send "exit\r"
+expect EOF
+EOF
+done
+
