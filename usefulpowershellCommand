@@ -1,0 +1,2 @@
+Get-VM -VMName {computerneme} | select-object VMId | Get-VHD <===========>Check hyper v VHDX information
+Get-VHD -Path "VDHX address" | select-object @{Name="SizeGB";Expression={$_.Size/1GB}} <==========>change display size to GB
