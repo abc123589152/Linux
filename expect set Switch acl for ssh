@@ -1,5 +1,5 @@
 #!/bin/bash
-ipaddr=($(cat /home/abc123/shellscrtipt/ipaddress2.txt))
+ipaddr=($(cat FileAddress/ipaddress2.txt))
 for((i=0;i<${#ipaddr[@]};i++))
 do
 /usr/bin/expect << EOF
@@ -14,7 +14,7 @@ send "cisco\r"
 expect "#"
 send "conf t\r"
 expect "(config)#"
-send "access-list 10 permit 192.168.190.132 log\r"
+send "access-list 10 permit {192.x.x.x} log\r"
 expect "(config)#"
 send "line vty 0 15\r"
 expect "(config-line)#"
