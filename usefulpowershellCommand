@@ -6,3 +6,6 @@ net use \\{ipaddress}\C$ /user:{ComputerUserName} {password}
 Remove-Item {path}======>Delete File
 \schtasks.exe /Create /U{username} /P{password} /TR c:\\shutdown.bat /SC DAILY /S{ipaddress} /TN shutdown /st 16:03 /F /ru "SYSTEM"==>Setting schedule
 \schtasks /run /TN shutdown /U{username}/P {password} /S {ipaddress}===>run for remote-computer schedule
+Get-ExecutionPolicy ===>get policy to powershell 
+Set-ExecutionPolicy -Executionpolicy Restricted ===>protated use ./*.ps1 
+Set-ExecutionPolicy -ExecutionPolicy ByPass ====>unlock protated use ./*.ps1
